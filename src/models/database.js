@@ -5,10 +5,10 @@ const Sequelize = require('sequelize');
 const config = require('../../config.json');
 
 
-// Create an instance of sequelize 
+// Create an instance of sequelize
 const sequelize = new Sequelize(config.dbName, config.dbLogin, config.dbPassword, {
   host: config.dbHostname,
-  dialect: 'mysql'
+  dialect: 'mysql',
 });
 
 // Test the connection by trying to authenticate to the database
