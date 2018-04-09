@@ -6,5 +6,5 @@
     "dbName": "database",
     "dbLogin": "user",
     "dbPassword": "password",
-    "dbHostname": "localhost"
+    "dbHostname": "puppy-db"
 }
