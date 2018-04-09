@@ -1,0 +1,10 @@
+{
+    "frontUrl": "://localhost",
+    "backUrl": "://localhost",
+    "frontDevPort": "3000",
+    "backDevPort": "8080",
+    "dbName": "database",
+    "dbLogin": "user",
+    "dbPassword": "password",
+    "dbHostname": "localhost"
+}
