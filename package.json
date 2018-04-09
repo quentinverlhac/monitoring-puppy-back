@@ -1,0 +1,20 @@
+{
+  "name": "monitoring-puppy-back",
+  "version": "0.1.0",
+  "description": "A website monitoring application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.viarezo.fr:2016verlhacq/monitoring-puppy-back.git"
+  },
+  "author": "Quentin Verlhac",
+  "license": "ISC",
+  "dependencies": {
+    "apidoc": "^0.17.6",
+    "express": "^4.16.3",
+    "sequelize": "^4.37.6"
+  }
+}
