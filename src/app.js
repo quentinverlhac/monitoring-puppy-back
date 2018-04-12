@@ -1,6 +1,6 @@
 // Copyright (C) 2018 Quentin VERLHAC
 
-// Import node package modules
+// Import node modules
 const express = require('express');
 
 // Instantiate express server
