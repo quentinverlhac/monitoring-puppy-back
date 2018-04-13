@@ -1,5 +1,9 @@
+// Copyright (C) 2018 Quentin VERLHAC
+
+// Import node package modules
 const mongoose = require('mongoose');
 
+// Create a schema for website ping logs
 const logSchema = new mongoose.Schema({
   date: Date,
   answered: Boolean,
@@ -7,6 +11,7 @@ const logSchema = new mongoose.Schema({
   responseCode: String,
 });
 
+// Create a schema for website information
 const websiteSchema = new mongoose.Schema({
   name: String,
   url: String,
@@ -14,6 +19,7 @@ const websiteSchema = new mongoose.Schema({
   checkList: [logSchema],
 });
 
+// Create a schema for alert history
 const historySchema = new mongoose.Schema({
   website: [{ type: mongoose.Schema.Types.ObjectId, ref: 'websiteSchema' }],
   status: String,
@@ -21,6 +27,7 @@ const historySchema = new mongoose.Schema({
   time: Number,
 });
 
+// Export schemas
 module.exports = {
   websiteSchema,
   historySchema,
