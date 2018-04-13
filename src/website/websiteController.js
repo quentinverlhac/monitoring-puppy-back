@@ -9,7 +9,7 @@ async function addWebsite(req, res, next) {
     const website = new Website({
       name: req.body.name,
       url: req.body.url,
-      timeInterval: req.body.timeInterval,
+      checkInterval: req.body.checkInterval,
     });
     // Save the website
     website.save();
