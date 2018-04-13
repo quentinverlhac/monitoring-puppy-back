@@ -18,12 +18,12 @@ db.once('open', () => {
   console.log('Successful connection to database');
 
   // Create models from mongodb schema
-  const website = db.model('website', websiteSchema);
-  const history = db.model('history', historySchema);
+  const Website = db.model('website', websiteSchema);
+  const History = db.model('history', historySchema);
 
   // Export models
   module.exports = {
-    website,
-    history,
+    Website,
+    History,
   };
 });
