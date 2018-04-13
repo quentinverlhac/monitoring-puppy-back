@@ -13,17 +13,17 @@ const db = mongoose.connection;
 // Test if there is errors during the connection
 db.on('error', console.error.bind(console, 'connection error:'));
 
-// Once the connection is opened
+// Display in console when the connection is successfully opened
 db.once('open', () => {
   console.log('Successful connection to database');
-
-  // Create models from mongodb schema
-  const Website = db.model('website', websiteSchema);
-  const History = db.model('history', historySchema);
-
-  // Export models
-  module.exports = {
-    Website,
-    History,
-  };
 });
+
+// Create models from mongodb schema
+const Website = db.model('website', websiteSchema);
+const History = db.model('history', historySchema);
+
+// Export models
+module.exports = {
+  Website,
+  History,
+};
