@@ -11,9 +11,6 @@ services:
     working_dir: /app
     command: ./node_modules/nodemon/bin/nodemon.js index.js
   puppy-db:
-    image: mariadb:latest
-    environment:
-      - MYSQL_ROOT_PASSWORD=pwd
-      - MYSQL_DATABASE=database
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=password
+    image: mongo:latest
+    ports:
+      - "27017:27017"
