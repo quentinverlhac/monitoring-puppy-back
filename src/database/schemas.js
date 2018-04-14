@@ -13,8 +13,14 @@ const logSchema = new mongoose.Schema({
 
 // Create a schema for website information
 const websiteSchema = new mongoose.Schema({
-  name: String,
-  url: String,
+  name: {
+    type: String,
+    unique: true,
+  },
+  url: {
+    type: String,
+    unique: true,
+  },
   checkInterval: Number,
   checkList: [logSchema],
 });
