@@ -1,9 +1,5 @@
 // Import node modules
 const axios = require('axios');
-const axiosTiming = require('axios-timing');
-const { Website } = require('../database/database');
-
-const intervals = [];
 
 async function checkWebsite(website) {
   console.log(website);
@@ -16,22 +12,5 @@ async function checkWebsite(website) {
   });
 }
 
-async function runMonitoring() {
-  const websites = await Website.find().select('url checkInterval -_id');
-  websites.map((website) => {
-    const interval = setInterval(checkWebsite, website.checkInterval * 1000, website);
-    intervals.push(interval);
-  });
-}
-
-async function stopMonitoring() {
-  intervals.map((interval) => {
-    clearInterval(interval);
-  });
-}
-
-module.exports = {
-  runMonitoring,
-  stopMonitoring,
-};
+module.exports = checkWebsite;
 
