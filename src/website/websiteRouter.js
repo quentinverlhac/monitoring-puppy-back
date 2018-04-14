@@ -14,7 +14,7 @@ const router = new express.Router();
 router.route('/')
   .post(addWebsite)
   .get(getAllWebsites);
-router.route('/:id')
+router.route('/:name')
   .put(updateWebsite)
   .delete(deleteWebsite);
 router.use(handleError);

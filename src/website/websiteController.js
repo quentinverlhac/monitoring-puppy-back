@@ -32,7 +32,7 @@ async function getAllWebsites(req, res, next) {
 async function updateWebsite(req, res, next) {
   try {
     // Find the website to update with its id
-    const website = await Website.findOneAndUpdate({ _id: req.params.name }, { $set: req.body }, { new: true });
+    const website = await Website.findOneAndUpdate({ name: req.params.name }, { $set: req.body }, { new: true });
     res.send(website);
   } catch (err) {
     next(err);
@@ -42,7 +42,7 @@ async function updateWebsite(req, res, next) {
 async function deleteWebsite(req, res, next) {
   try {
     // Find the website to delete with its id
-    const website = await Website.findOneAndRemove({ _id: req.params.name });
+    const website = await Website.findOneAndRemove({ name: req.params.name });
     res.send(website);
   } catch (err) {
     next(err);
