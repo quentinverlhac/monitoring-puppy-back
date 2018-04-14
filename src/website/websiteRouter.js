@@ -2,7 +2,9 @@
 
 // Import node modules
 const express = require('express');
-const { addWebsite, getAllWebsites, deleteWebsite } = require('./websiteController');
+const {
+  addWebsite, getAllWebsites, updateWebsite, deleteWebsite,
+} = require('./websiteController');
 const handleError = require('../misc/errorHandler');
 
 // Create router
@@ -13,6 +15,7 @@ router.route('/')
   .post(addWebsite)
   .get(getAllWebsites);
 router.route('/:id')
+  .put(updateWebsite)
   .delete(deleteWebsite);
 router.use(handleError);
 
