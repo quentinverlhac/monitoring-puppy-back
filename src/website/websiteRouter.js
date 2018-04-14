@@ -2,14 +2,18 @@
 
 // Import node modules
 const express = require('express');
-const { addWebsite } = require('./websiteController');
+const { addWebsite, getAllWebsites, deleteWebsite } = require('./websiteController');
 const handleError = require('../misc/errorHandler');
 
 // Create router
 const router = new express.Router();
 
 // Set up routes
-router.route('/').post(addWebsite);
+router.route('/')
+  .post(addWebsite)
+  .get(getAllWebsites);
+router.route('/:id')
+  .delete(deleteWebsite);
 router.use(handleError);
 
 // Export router
