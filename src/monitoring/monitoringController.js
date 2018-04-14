@@ -6,12 +6,13 @@ const intervals = [];
 
 async function runMonitoring(req, res, next) {
   try {
-    const websites = await Website.find().select('url checkInterval -_id');
+    console.log('Monitoring is running');
+    const websites = await Website.find().select('url checkInterval checkList');
     websites.map((website) => {
       const interval = setInterval(checkWebsite, website.checkInterval * 1000, website);
       intervals.push(interval);
     });
-    res.send('OK');
+    res.send('Monitoring is running');
   } catch (err) {
     next(err);
   }
@@ -19,10 +20,11 @@ async function runMonitoring(req, res, next) {
 
 async function stopMonitoring(req, res, next) {
   try {
+    console.log('Monitoring stopped');
     intervals.map((interval) => {
       clearInterval(interval);
     });
-    res.send('OK');
+    res.send('Monitoring stopped');
   } catch (err) {
     next(err);
   }
