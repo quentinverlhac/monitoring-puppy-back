@@ -1,5 +1,4 @@
-// Import node package modules
-
+// Import node modules
 const { Website } = require('../database/database');
 
 async function addWebsite(req, res, next) {
