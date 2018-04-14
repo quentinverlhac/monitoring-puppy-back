@@ -1,5 +1,3 @@
-// Copyright (C) 2018 Quentin VERLHAC
-
 // Import node modules
 const express = require('express');
 const bodyParser = require('body-parser');

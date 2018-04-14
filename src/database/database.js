@@ -1,5 +1,3 @@
-// Copyright (C) 2018 Quentin VERLHAC
-
 // Import node package modules
 const mongoose = require('mongoose');
 
