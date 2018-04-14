@@ -22,7 +22,7 @@ async function addWebsite(req, res, next) {
 async function getAllWebsites(req, res, next) {
   try {
     // Get every websites, without their logs
-    const websites = await Website.find().select('-checkList');
+    const websites = await Website.find().select('name url checkInterval -_id');
     res.send(websites);
   } catch (err) {
     next(err);
@@ -32,7 +32,7 @@ async function getAllWebsites(req, res, next) {
 async function updateWebsite(req, res, next) {
   try {
     // Find the website to update with its id
-    const website = await Website.findOneAndUpdate({ name: req.params.name }, { $set: req.body }, { new: true });
+    const website = await Website.findOneAndUpdate({ name: req.params.name }, { $set: req.body }, { new: true }).select('name url checkInterval -_id');
     res.send(website);
   } catch (err) {
     next(err);
@@ -42,7 +42,7 @@ async function updateWebsite(req, res, next) {
 async function deleteWebsite(req, res, next) {
   try {
     // Find the website to delete with its id
-    const website = await Website.findOneAndRemove({ name: req.params.name });
+    const website = await Website.findOneAndRemove({ name: req.params.name }).select('name url checkInterval -_id');
     res.send(website);
   } catch (err) {
     next(err);
