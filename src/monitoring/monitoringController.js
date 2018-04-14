@@ -11,6 +11,7 @@ async function runMonitoring(req, res, next) {
       const interval = setInterval(checkWebsite, website.checkInterval * 1000, website);
       intervals.push(interval);
     });
+    res.send('OK');
   } catch (err) {
     next(err);
   }
@@ -21,6 +22,7 @@ async function stopMonitoring(req, res, next) {
     intervals.map((interval) => {
       clearInterval(interval);
     });
+    res.send('OK');
   } catch (err) {
     next(err);
   }
