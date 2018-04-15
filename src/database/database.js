@@ -17,9 +17,9 @@ db.once('open', () => {
 });
 
 // Create models from mongodb schema
-const Website = db.model('website', websiteSchema);
-const Log = db.model('log', logSchema);
-const History = db.model('history', historySchema);
+const Website = db.model('Website', websiteSchema);
+const Log = db.model('Log', logSchema);
+const History = db.model('History', historySchema);
 
 // Export models
 module.exports = {
