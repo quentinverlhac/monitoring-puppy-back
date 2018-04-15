@@ -1,4 +1,4 @@
-// Import node package modules
+// Import node modules
 const mongoose = require('mongoose');
 
 // Create a schema for website ping logs
