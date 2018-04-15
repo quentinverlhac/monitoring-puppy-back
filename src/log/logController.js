@@ -1,6 +1,6 @@
 // Import node modules
 const { Log } = require('../database/database');
-const logGetter = require('./logGetter');
+const logGetter = require('../misc/logGetter');
 
 async function getLogs(req, res, next) {
   try {
