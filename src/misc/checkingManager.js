@@ -18,7 +18,7 @@ async function startChecking() {
 }
 
 // This function stops checking of websites
-async function stopChecking() {
+function stopChecking() {
   // Cancel all running intervals
   intervals.map((interval) => {
     clearInterval(interval);
