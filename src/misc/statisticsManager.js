@@ -7,13 +7,11 @@ const intervals = [];
 
 // This function set up computation of statistics every timestamp
 async function startStatisticsComputing(timestamp, duration) {
-  // Get current date to compute statistics from now past to duration
-  const end = Date.now();
   // Get all websites
   const websites = await Website.find().select('name');
   // Check website availability at regular intervals, given by the checkInterval field
   websites.map((website) => {
-    const interval = setInterval(computeStatistics, timestamp, website.name, end - duration, end);
+    const interval = setInterval(computeStatistics, timestamp, website.name, duration);
     // Keep track of running intervals to be able to cancel them later
     intervals.push(interval);
   });
