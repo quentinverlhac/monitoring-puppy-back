@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 
 // Create a schema for website ping logs
 const logSchema = new mongoose.Schema({
-  date: Date,
+  website: [{ type: mongoose.Schema.Types.ObjectId, ref: 'websiteSchema' }],
+  dateTimestamp: Number,
   answered: Boolean,
   responseTime: Number,
   responseCode: String,
@@ -20,7 +21,6 @@ const websiteSchema = new mongoose.Schema({
     unique: true,
   },
   checkInterval: Number,
-  checkList: [logSchema],
 });
 
 // Create a schema for alert history
@@ -28,11 +28,12 @@ const historySchema = new mongoose.Schema({
   website: [{ type: mongoose.Schema.Types.ObjectId, ref: 'websiteSchema' }],
   status: String,
   availability: Number,
-  time: Number,
+  dateTimestamp: Number,
 });
 
 // Export schemas
 module.exports = {
+  logSchema,
   websiteSchema,
   historySchema,
 };
