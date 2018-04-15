@@ -14,12 +14,14 @@ async function computeStatistics(websiteName, beginning, end) {
   const averageResponseTime = await computeAverageResponseTime(logs);
   const responseCodes = await countResponseCodes(logs);
   // Display statistics
+  console.log(`Statistics of ${websiteName} for the last ${(end - beginning) / 1000} seconds`);
   console.log(`Average availability: ${averageAvailability}`);
   console.log(`Maximum response time: ${maxResponseTime}`);
   console.log(`Average response time: ${averageResponseTime}`);
   Object.entries(responseCodes).map((code) => {
     console.log(`Number of HTTP status ${code[0]} occurences: ${code[1]}`);
   });
+  console.log('');
 }
 
 module.exports = computeStatistics;
