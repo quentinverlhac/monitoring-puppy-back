@@ -1,5 +1,5 @@
 // Import node modules
-const checkWebsite = require('./websiteChecker');
+const checkWebsite = require('../misc/websiteChecker');
 const { Website } = require('../database/database');
 
 const intervals = [];
