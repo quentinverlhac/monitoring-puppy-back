@@ -1,5 +1,6 @@
 // Import node modules
 const axios = require('axios');
+const { Log } = require('../database/database');
 
 // This function sends a request to the specified website to check if it is available.
 function checkWebsite(website) {
@@ -12,13 +13,14 @@ function checkWebsite(website) {
         // Success, everything is fine
         const receptionTime = Date.now();
         // Add the information to the website check list
-        website.checkList.push({
-          date: receptionTime,
+        const log = new Log({
+          website: website._id,
+          dateTimestamp: receptionTime,
           answered: true,
           responseTime: receptionTime - beginningTime,
           responseCode: response.status,
         });
-        await website.save();
+        await log.save();
       })
       .catch(async (error) => {
         // There is an error
@@ -31,13 +33,14 @@ function checkWebsite(website) {
           responseTime = receptionTime - beginningTime;
         }
         // Add the information to the website check list
-        website.checkList.push({
-          date: receptionTime,
+        const log = new Log({
+          website: website._id,
+          dateTimestamp: receptionTime,
           answered: false,
           responseTime,
           responseCode,
         });
-        await website.save();
+        await log.save();
       });
   } catch (err) {
     console.error(err);
