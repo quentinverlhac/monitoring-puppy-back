@@ -1,4 +1,4 @@
-const app = require('./src/app');
+const server = require('./src/app');
 
 // the back listens the port 8080
-app.listen(8080);
+server.listen(8080);
