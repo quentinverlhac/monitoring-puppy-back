@@ -9,13 +9,18 @@ const bodyParser = require('body-parser');
 const websiteRouter = require('./website/websiteRouter');
 const monitoringRouter = require('./monitoring/monitoringRouter');
 const logRouter = require('./log/logRouter');
+const StatisticsManager = require('./statistics/StatisticsManager');
 
 // Use body parser for parsing the body of http requests to json objets
 app.use(bodyParser.json());
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+  const statisticsManager = new StatisticsManager(socket);
+  statisticsManager.startStatisticsComputing(10000, 600000);
+  statisticsManager.startStatisticsComputing(60000, 3600000);
   socket.on('disconnect', () => {
+    statisticsManager.stopStatisticsComputing();
     console.log('user disconnected');
   });
 });
