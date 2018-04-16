@@ -10,6 +10,7 @@ async function countResponseCodes(logs) {
       if (counter[log.responseCode]) {
         counter[log.responseCode] += 1;
       } else {
+        // The code isn't in the counter yet
         counter[log.responseCode] = 1;
       }
     } else {
