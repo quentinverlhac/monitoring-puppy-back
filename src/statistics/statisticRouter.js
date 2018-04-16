@@ -1,6 +1,6 @@
 // Import node modules
 const express = require('express');
-const { getStatistics } = require('./statisticController');
+const getStatistics = require('./statisticController');
 const handleError = require('../misc/errorHandler');
 
 // Create router
