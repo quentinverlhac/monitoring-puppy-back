@@ -21,6 +21,7 @@ const websiteSchema = new mongoose.Schema({
     unique: true,
   },
   checkInterval: Number,
+  isDown: Boolean,
 });
 
 // Create a schema for alert history
