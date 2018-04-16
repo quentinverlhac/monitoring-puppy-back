@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use('/api/website', websiteRouter);
 app.use('/api/monitoring', monitoringRouter);
 app.use('/api/log', logRouter);
-app.use('/api/satistic', statisticsRouter);
+app.use('/api/statistic', statisticsRouter);
 
 // Exports
 module.exports = server;
