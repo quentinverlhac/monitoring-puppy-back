@@ -1,6 +1,6 @@
 // Import node modules
-const { Log } = require('../database/database');
-const getLogs = require('../misc/logGetter');
+const { Log } = require('../../database/database');
+const getLogs = require('../../misc/logGetter');
 const computeAvailability = require('./availabilityComputer');
 const { computeMaxResponseTime, computeAverageResponseTime } = require('./responseTimeComputer');
 const countResponseCodes = require('./responseCodeCounter');
@@ -33,14 +33,6 @@ async function computeStatistics(websiteName, duration) {
   });
   console.log('');
   return statistics;
-}
-
-
-async computeAllStatistics() {
-  // Get all websites
-  const websites = await Website.find().select('name');
-  // Check website availability at regular intervals, given by the checkInterval field
-  const stats = websites.map(website => computeStatistics(website.name, duration));
 }
 
 module.exports = computeStatistics;
