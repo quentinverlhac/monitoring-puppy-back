@@ -23,15 +23,6 @@ async function computeStatistics(websiteName, duration) {
     averageResponseTime,
     responseCodes,
   };
-  // Display statistics in back console
-  console.log(`Statistics of ${websiteName} for the last ${(duration) / 1000} seconds`);
-  console.log(`Average availability: ${availability}`);
-  console.log(`Maximum response time: ${maxResponseTime}`);
-  console.log(`Average response time: ${averageResponseTime}`);
-  Object.entries(responseCodes).map((code) => {
-    console.log(`Number of HTTP status ${code[0]} occurences: ${code[1]}`);
-  });
-  console.log('');
   return statistics;
 }
 
