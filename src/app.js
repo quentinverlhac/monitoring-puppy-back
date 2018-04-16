@@ -8,6 +8,7 @@ const websiteRouter = require('./website/websiteRouter');
 const monitoringRouter = require('./monitoring/monitoringRouter');
 const logRouter = require('./log/logRouter');
 const statisticsRouter = require('./statistics/statisticRouter');
+const historyRouter = require('./history/historyRouter');
 
 // Use body parser for parsing the body of http requests to json objets
 app.use(bodyParser.json());
@@ -16,6 +17,7 @@ app.use('/api/website', websiteRouter);
 app.use('/api/monitoring', monitoringRouter);
 app.use('/api/log', logRouter);
 app.use('/api/statistic', statisticsRouter);
+app.use('/api/history', historyRouter);
 
 // Exports
 module.exports = server;
