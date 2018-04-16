@@ -6,7 +6,7 @@ const { computeMaxResponseTime, computeAverageResponseTime } = require('./respon
 const countResponseCodes = require('./responseCodeCounter');
 
 // Compute the recent statistics of a given website, over the given duration
-async function computeStatistics(websiteName, duration, statisticsManager) {
+async function computeStatistics(websiteName, duration) {
   // Get current date to compute recent statistics
   const end = Date.now();
   // Get the logs of the website between the interval
@@ -23,7 +23,6 @@ async function computeStatistics(websiteName, duration, statisticsManager) {
     averageResponseTime,
     responseCodes,
   };
-  statisticsManager.sendStatistics(statistics);
   // Display statistics in back console
   console.log(`Statistics of ${websiteName} for the last ${(duration) / 1000} seconds`);
   console.log(`Average availability: ${availability}`);
@@ -33,6 +32,15 @@ async function computeStatistics(websiteName, duration, statisticsManager) {
     console.log(`Number of HTTP status ${code[0]} occurences: ${code[1]}`);
   });
   console.log('');
+  return statistics;
+}
+
+
+async computeAllStatistics() {
+  // Get all websites
+  const websites = await Website.find().select('name');
+  // Check website availability at regular intervals, given by the checkInterval field
+  const stats = websites.map(website => computeStatistics(website.name, duration));
 }
 
 module.exports = computeStatistics;
