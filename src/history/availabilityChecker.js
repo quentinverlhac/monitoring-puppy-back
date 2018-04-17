@@ -24,6 +24,7 @@ async function checkAvailability(website, duration, alertManager) {
       dateTimestamp: now,
     });
     await alert.save();
+    await alert.populate('website').execPopulate();
     // Send the alert
     alertManager.sendAlert(alert);
   }
