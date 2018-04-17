@@ -3,6 +3,8 @@
 const app = require('express')();
 // Set up http server with app
 const server = require('http').Server(app);
+// Instantiate socket.io with http serveur
+const io = require('socket.io')(server);
 const bodyParser = require('body-parser');
 const websiteRouter = require('./website/websiteRouter');
 const monitoringRouter = require('./monitoring/monitoringRouter');
