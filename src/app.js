@@ -11,6 +11,7 @@ const monitoringRouter = require('./monitoring/monitoringRouter');
 const logRouter = require('./log/logRouter');
 const statisticsRouter = require('./statistics/statisticRouter');
 const historyRouter = require('./history/historyRouter');
+const StatisticsManager = require('./statistics/StatisticManager');
 
 // Use body parser for parsing the body of http requests to json objets
 app.use(bodyParser.json());
