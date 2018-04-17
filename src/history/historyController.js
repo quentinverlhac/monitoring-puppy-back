@@ -1,6 +1,6 @@
 // Import node modules
 const { Website, History } = require('../database/database');
-const getLogs = require('../misc/logGetter');
+const getLogs = require('../log/logGetter');
 const computeAvailability = require('../statistics/logic/availabilityComputer');
 
 async function getAlerts(req, res, next) {
@@ -11,7 +11,7 @@ async function getAlerts(req, res, next) {
     const websites = await Website.find();
     const alerts = websites.map(async (website) => {
       // Get all logs within last 2 minutes
-      const logs = await logGetter(website, now - 120000, now);
+      const logs = await getLogs(website, now - 120000, now);
       // Compute availability of the logs
       const availability = computeAvailability(logs);
       // If there is a breakthrough in the website situation

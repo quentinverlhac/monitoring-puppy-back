@@ -1,6 +1,5 @@
 // Import node modules
-const { Log } = require('../../database/database');
-const getLogs = require('../../misc/logGetter');
+const getLogs = require('../../log/logGetter');
 const computeAvailability = require('./availabilityComputer');
 const { computeMaxResponseTime, computeAverageResponseTime } = require('./responseTimeComputer');
 const countResponseCodes = require('./responseCodeCounter');
