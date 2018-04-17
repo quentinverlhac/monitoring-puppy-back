@@ -1,12 +1,12 @@
 // Import node modules
-const { startChecking, stopChecking } = require('../misc/checkingManager');
+const pingManager = require('../misc/PingManager')();
 
 async function runMonitoring(req, res, next) {
   try {
-    console.log('Monitoring is running');
+    console.log('Ping is running');
     // Start checking websites
-    startChecking();
-    res.send('Monitoring is running');
+    pingManager.startPing();
+    res.send('Ping is running');
   } catch (err) {
     next(err);
   }
@@ -14,10 +14,10 @@ async function runMonitoring(req, res, next) {
 
 async function stopMonitoring(req, res, next) {
   try {
-    console.log('Monitoring stopped');
+    console.log('Ping stopped');
     // Stop checking websites
-    stopChecking();
-    res.send('Monitoring stopped');
+    pingManager.stopPing();
+    res.send('Ping stopped');
   } catch (err) {
     next(err);
   }

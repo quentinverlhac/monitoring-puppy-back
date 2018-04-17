@@ -3,7 +3,7 @@ const axios = require('axios');
 const { Log } = require('../database/database');
 
 // This function sends a request to the specified website to check if it is available.
-function checkWebsite(website) {
+function pingWebsite(website) {
   try {
     // Save beginning time to compute response time.
     const beginningTime = Date.now();
