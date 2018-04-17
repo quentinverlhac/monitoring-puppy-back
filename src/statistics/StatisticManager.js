@@ -12,7 +12,6 @@ class StatisticsManager {
 
   sendStatistics(statistics) {
     console.log('Statistics sent !');
-    console.log(this.socket);
     this.socket.emit('statistics', statistics);
   }
 
