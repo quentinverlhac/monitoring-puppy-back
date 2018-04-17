@@ -47,5 +47,5 @@ function pingWebsite(website) {
   }
 }
 
-module.exports = checkWebsite;
+module.exports = pingWebsite;
 

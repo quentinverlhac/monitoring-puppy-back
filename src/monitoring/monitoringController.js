@@ -1,5 +1,7 @@
 // Import node modules
-const pingManager = require('../misc/PingManager')();
+const PingManager = require('../misc/PingManager');
+
+const pingManager = new PingManager();
 
 async function runMonitoring(req, res, next) {
   try {
