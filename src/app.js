@@ -12,6 +12,7 @@ const logRouter = require('./log/logRouter');
 const statisticsRouter = require('./statistics/statisticRouter');
 const historyRouter = require('./history/historyRouter');
 const StatisticsManager = require('./statistics/StatisticManager');
+const AlertManager = require('./history/AlertManager');
 
 // Use body parser for parsing the body of http requests to json objets
 app.use(bodyParser.json());
@@ -19,10 +20,13 @@ app.use(bodyParser.json());
 io.on('connection', (socket) => {
   console.log('a user connected');
   const statisticsManager = new StatisticsManager(socket);
+  const alertManager = new AlertManager(socket);
   statisticsManager.startStatisticsComputing(10000, 600000);
   statisticsManager.startStatisticsComputing(60000, 3600000);
+  alertManager.startWatching(1000, 120000);
   socket.on('disconnect', () => {
     statisticsManager.stopStatisticsComputing();
+    alertManager.startWatching();
     console.log('user disconnected');
   });
 });
