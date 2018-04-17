@@ -17,6 +17,7 @@ async function computeStatistics(websiteName, duration, statisticsManager) {
   const responseCodes = await countResponseCodes(logs);
   // Send statistics to front
   const statistics = {
+    websiteName,
     availability,
     maxResponseTime,
     averageResponseTime,
