@@ -8,9 +8,9 @@ async function checkAvailability(website, duration, alertManager) {
   // Measure current date
   const now = Date.now();
   // Get all logs within last 2 minutes
-  const logs = await getLogs(website, now - duration, now);
+  const logs = await getLogs(website.name, now - duration, now);
   // Compute availability of the logs
-  const availability = computeAvailability(logs);
+  const availability = await computeAvailability(logs);
   // If there is a breakthrough in the website situation
   if ((availability < 0.8 && !website.isDown) || (availability >= 0.8 && website.isDown)) {
     // Change the website situation in bdd
@@ -18,6 +18,7 @@ async function checkAvailability(website, duration, alertManager) {
     await website.save();
     // Create an alert
     const alert = new History({
+      website: website._id,
       status: (website.isDown ? 'down' : 'up'),
       availability,
       dateTimestamp: now,
