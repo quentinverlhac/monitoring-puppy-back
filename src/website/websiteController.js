@@ -7,6 +7,7 @@ async function addWebsite(req, res, next) {
       name: req.body.name,
       url: req.body.url,
       checkInterval: req.body.checkInterval,
+      isDown: false,
     });
     // Save the website
     website.save();
@@ -29,7 +30,9 @@ async function getAllWebsites(req, res, next) {
 async function updateWebsite(req, res, next) {
   try {
     // Find the website to update with its id
-    const website = await Website.findOneAndUpdate({ name: req.params.name }, { $set: req.body }, { new: true }).select('name url checkInterval -_id');
+    const website = await Website
+      .findOneAndUpdate({ name: req.params.name }, { $set: req.body }, { new: true })
+      .select('name url checkInterval -_id');
     res.send(website);
   } catch (err) {
     next(err);
@@ -39,7 +42,9 @@ async function updateWebsite(req, res, next) {
 async function deleteWebsite(req, res, next) {
   try {
     // Find the website to delete with its id
-    const website = await Website.findOneAndRemove({ name: req.params.name }).select('name url checkInterval -_id');
+    const website = await Website
+      .findOneAndRemove({ name: req.params.name })
+      .select('name url checkInterval -_id');
     res.send(website);
   } catch (err) {
     next(err);
