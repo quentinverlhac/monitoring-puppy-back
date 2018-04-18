@@ -4,17 +4,18 @@ const {
   addWebsite, getAllWebsites, updateWebsite, deleteWebsite,
 } = require('./websiteController');
 const handleError = require('../misc/errorHandler');
+const { validateWebsiteBody, validateWebsiteParams } = require('../misc/websiteValidator');
 
 // Create router
 const router = new express.Router();
 
 // Set up routes
 router.route('/')
-  .post(addWebsite)
+  .post(validateWebsiteBody, addWebsite)
   .get(getAllWebsites);
 router.route('/:name')
-  .put(updateWebsite)
-  .delete(deleteWebsite);
+  .put(validateWebsiteParams, validateWebsiteBody, updateWebsite)
+  .delete(validateWebsiteParams, deleteWebsite);
 router.use(handleError);
 
 // Export router
