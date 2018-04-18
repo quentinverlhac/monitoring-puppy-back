@@ -7,7 +7,7 @@ async function getHistory(req, res, next) {
     const history = await History.find({ dateTimestamp: { $gt: parseInt(req.params.timestamp) } }).populate('website');
     res.send(history);
   } catch (err) {
-    next(err);
+    next(err, req, res, next);
   }
 }
 

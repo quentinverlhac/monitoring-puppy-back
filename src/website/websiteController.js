@@ -13,7 +13,7 @@ async function addWebsite(req, res, next) {
     website.save();
     res.send(website);
   } catch (err) {
-    next(err);
+    next(err, req, res, next);
   }
 }
 
@@ -23,7 +23,7 @@ async function getAllWebsites(req, res, next) {
     const websites = await Website.find().select('name url checkInterval -_id');
     res.send(websites);
   } catch (err) {
-    next(err);
+    next(err, req, res, next);
   }
 }
 
@@ -35,7 +35,7 @@ async function updateWebsite(req, res, next) {
       .select('name url checkInterval -_id');
     res.send(website);
   } catch (err) {
-    next(err);
+    next(err, req, res, next);
   }
 }
 
@@ -47,7 +47,7 @@ async function deleteWebsite(req, res, next) {
       .select('name url checkInterval -_id');
     res.send(website);
   } catch (err) {
-    next(err);
+    next(err, req, res, next);
   }
 }
 

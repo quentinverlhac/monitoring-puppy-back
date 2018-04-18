@@ -6,7 +6,7 @@ async function getStatistics(req, res, next) {
     const statistics = await computeStatistics(req.params.website, parseInt(req.params.duration));
     res.send(statistics);
   } catch (err) {
-    next(err);
+    next(err, req, res, next);
   }
 }
 

@@ -8,7 +8,7 @@ async function runMonitoring(req, res, next) {
     pingManager.startPing();
     res.send('Ping is running');
   } catch (err) {
-    next(err);
+    next(err, req, res, next);
   }
 }
 
@@ -19,7 +19,7 @@ async function stopMonitoring(req, res, next) {
     pingManager.stopPing();
     res.send('Ping stopped');
   } catch (err) {
-    next(err);
+    next(err, req, res, next);
   }
 }
 
