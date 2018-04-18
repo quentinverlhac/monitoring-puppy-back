@@ -11,6 +11,7 @@ const monitoringRouter = require('./monitoring/monitoringRouter');
 const logRouter = require('./log/logRouter');
 const statisticsRouter = require('./statistics/statisticRouter');
 const historyRouter = require('./history/historyRouter');
+const pingManager = require('./monitoring/PingManager');
 const StatisticsManager = require('./statistics/StatisticManager');
 const AlertManager = require('./history/AlertManager');
 
@@ -21,12 +22,14 @@ io.on('connection', (socket) => {
   console.log('a user connected');
   const statisticsManager = new StatisticsManager(socket);
   const alertManager = new AlertManager(socket);
+  pingManager.startPing();
   statisticsManager.startStatisticsComputing(10000, 600000);
   statisticsManager.startStatisticsComputing(60000, 3600000);
   alertManager.startWatching(1000, 120000);
   socket.on('disconnect', () => {
-    statisticsManager.stopStatisticsComputing();
     alertManager.startWatching();
+    statisticsManager.stopStatisticsComputing();
+    pingManager.stopPing();
     console.log('user disconnected');
   });
 });
