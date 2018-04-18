@@ -1,7 +1,7 @@
 // Import node modules
-const { History } = require('../database/database');
-const getLogs = require('../log/logGetter');
-const computeAvailability = require('../statistics/logic/availabilityComputer');
+const { History } = require('../../database/database');
+const getLogs = require('../../log/logGetter');
+const computeAvailability = require('../../statistics/logic/availabilityComputer');
 
 
 async function checkAvailability(website, duration, alertManager) {

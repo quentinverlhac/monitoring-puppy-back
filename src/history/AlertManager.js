@@ -1,6 +1,6 @@
 // Import node modules
 const { Website } = require('../database/database');
-const checkAvailability = require('./availabilityChecker');
+const checkAvailability = require('./logic/availabilityChecker');
 
 class StatisticsManager {
   constructor(socket) {
