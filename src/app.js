@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
   statisticsManager.startStatisticsComputing(60000, 3600000);
   alertManager.startWatching(1000, 120000);
   socket.on('disconnect', () => {
-    alertManager.startWatching();
+    alertManager.stopWatching();
     statisticsManager.stopStatisticsComputing();
     pingManager.stopPing();
     console.log('user disconnected');
