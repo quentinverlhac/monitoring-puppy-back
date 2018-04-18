@@ -16,12 +16,12 @@ class PingManager {
     const websites = await Website.find();
     // Check website availability at regular intervals, given by the checkInterval field
     websites.map((website) => {
-      if (this.websites.indexOf(website._id) === -1) {
+      if (this.websites.indexOf(website.id) === -1) {
         const interval = setInterval(pingWebsite, website.checkInterval * 1000, website);
         // Keep track of running intervals to be able to cancel them later
         this.intervals.push(interval);
         // Add website to the list of pinged websites
-        this.websites.push(website._id);
+        this.websites.push(website.id);
       }
     });
   }
