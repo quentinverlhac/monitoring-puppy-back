@@ -7,10 +7,8 @@ async function computeMaxResponseTime(logs) {
       // Set the new response time to the greater of the current response time
       // and the response time of this log
       maxResponseTime = Math.max(maxResponseTime, log.responseTime);
-    } else {
-      // If there was a request without response, the max response time is set to infinity
-      maxResponseTime = Infinity;
     }
+    // If there was a request without response, it is ignored
   });
   // Return the max response time in the time interval
   return maxResponseTime;
@@ -24,10 +22,8 @@ async function computeAverageResponseTime(logs) {
       // If the request received an answer before timeout
       // Add it to the sum of response time
       sumOfResponseTime += log.responseTime;
-    } else {
-      // If there was a request without response, the average response time is set to infinity
-      sumOfResponseTime = Infinity;
     }
+    // If there was a request without response, it is ignored
   });
   // Return the average response time in the time interval
   return sumOfResponseTime / logs.length;

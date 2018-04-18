@@ -1,7 +1,7 @@
 // Compute the average response time of a website for the given logs array
 async function countResponseCodes(logs) {
   const counter = {};
-  // Instantiate null code (when request is answered) to 0
+  // Instantiate null code (when request is not answered) to 0
   counter.null = 0;
   logs.map((log) => {
     if (log.responseCode) {
@@ -14,11 +14,11 @@ async function countResponseCodes(logs) {
         counter[log.responseCode] = 1;
       }
     } else {
-      // If there was a request without response, the average response time is set to infinity
+      // If there was a request without response, it is count as a "null" code
       counter.null += 1;
     }
   });
-  // Return the average response time in the time interval
+  // Return the count of response codes in the time interval
   return counter;
 }
 
