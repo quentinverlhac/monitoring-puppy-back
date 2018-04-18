@@ -11,16 +11,18 @@ async function validateWebsiteBody(req, res, next) {
       // The name is taken by an other website
       // In case of update, we make sure it is not the name of the updated website
       res.status(400).send(`Error: website name ${req.body.name} already used`);
+    } else {
+      // Test if the url is already taken
+      website = await Website.findOne({ url: req.body.url });
+      if (website != null && req.params.name !== website.name) {
+        // The url is taken by an other website
+        // In case of update, we make sure it is not the url of the updated website
+        res.status(400).send(`Error: website url ${req.body.url} already used`);
+      } else {
+        // Everything is fine, let's complete the request !
+        next();
+      }
     }
-    // Test if the url is already taken
-    website = await Website.findOne({ url: req.body.url });
-    if (website != null && req.params.name !== website.name) {
-      // The url is taken by an other website
-      // In case of update, we make sure it is not the url of the updated website
-      res.status(400).send(`Error: website url ${req.body.url} already used`);
-    }
-    // Everything is fine, let's complete the request !
-    next();
   } catch (err) {
     next(err, req, res, next);
   }
@@ -35,9 +37,10 @@ async function validateWebsiteParams(req, res, next) {
     if (!website) {
       // The website doesn't exist
       res.status(400).send(`Error: website ${req.params.name} doesn't exist`);
+    } else {
+      // Everything is fine, let's complete the request !
+      next();
     }
-    // Everything is fine, let's complete the request !
-    next();
   } catch (err) {
     next(err, req, res, next);
   }
