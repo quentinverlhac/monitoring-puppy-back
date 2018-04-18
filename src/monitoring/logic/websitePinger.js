@@ -1,6 +1,6 @@
 // Import node modules
 const axios = require('axios');
-const { Log } = require('../database/database');
+const { Log } = require('../../database/database');
 
 // This function sends a request to the specified website to check if it is available.
 function pingWebsite(website) {
