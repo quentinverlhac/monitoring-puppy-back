@@ -18,6 +18,7 @@ async function computeStatistics(websiteName, duration, statisticsManager) {
   // Send statistics to front
   const statistics = {
     date: end,
+    duration,
     websiteName,
     availability,
     maxResponseTime,
