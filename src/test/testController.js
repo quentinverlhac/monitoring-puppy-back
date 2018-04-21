@@ -1,6 +1,8 @@
 function cosResponse(req, res) {
   const period = 120000;
-  if (Math.cos((Math.PI * Date.now()) / period) > 0) {
+  const threshold = 0.5 + Math.cos((Math.PI * Date.now()) / period) / 2;
+  const rand = Math.random();
+  if (rand > threshold) {
     console.log('Up');
     res.send('Hello World!');
   } else {
