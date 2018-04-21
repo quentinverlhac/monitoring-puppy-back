@@ -2,14 +2,20 @@
 const { Website } = require('../database/database');
 const computeStatistics = require('./logic/statisticsComputer');
 
+// This class is responsible for computing and sending statistics to the front
+// It creates and keeps track of statistics computing intervals
+// They are responsible for computing and sending statistics regularly
+// Statistics are sent through the socket between front and back
+// When the socket is closed (the app stops monitoring), intervals are cleared
 class StatisticsManager {
   constructor(socket) {
-    // This variable keeps track of the socket for sending live statistics
+    // This variable keeps track of the socket for sending real-time statistics
     this.socket = socket;
     // This variable keeps track of running intervals
     this.intervals = [];
   }
 
+  // This function is responsible for sending statistics through the socket
   sendStatistics(statistics) {
     console.log('Statistics sent !');
     this.socket.emit('statistics', statistics);
@@ -36,5 +42,5 @@ class StatisticsManager {
   }
 }
 
+// Export the manager
 module.exports = StatisticsManager;
-
