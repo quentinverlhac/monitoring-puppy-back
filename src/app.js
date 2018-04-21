@@ -9,7 +9,6 @@ const bodyParser = require('body-parser');
 const websiteRouter = require('./website/websiteRouter');
 const monitoringRouter = require('./monitoring/monitoringRouter');
 const logRouter = require('./log/logRouter');
-const statisticsRouter = require('./statistics/statisticRouter');
 const historyRouter = require('./history/historyRouter');
 const pingManager = require('./monitoring/PingManager');
 const StatisticsManager = require('./statistics/StatisticManager');
@@ -37,7 +36,6 @@ io.on('connection', (socket) => {
 app.use('/api/website', websiteRouter);
 app.use('/api/monitoring', monitoringRouter);
 app.use('/api/log', logRouter);
-app.use('/api/statistic', statisticsRouter);
 app.use('/api/history', historyRouter);
 
 // Exports
