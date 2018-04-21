@@ -24,10 +24,10 @@ class StatisticsManager {
   // This function set up computation of statistics every timestamp
   async startStatisticsComputing(timestamp, duration) {
   // Get all websites
-    const websites = await Website.find().select('name');
+    const websites = await Website.find();
     // Check website availability at regular intervals, given by the checkInterval field
     websites.map((website) => {
-      const interval = setInterval(computeStatistics, timestamp, website.name, duration, this);
+      const interval = setInterval(computeStatistics, timestamp, website, duration, this);
       // Keep track of running intervals to be able to cancel them later
       this.intervals.push(interval);
     });

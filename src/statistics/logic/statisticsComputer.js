@@ -5,11 +5,11 @@ const { computeMaxResponseTime, computeAverageResponseTime } = require('./respon
 const countResponseCodes = require('./responseCodeCounter');
 
 // Compute the recent statistics of a given website, over the given duration
-async function computeStatistics(websiteName, duration, statisticsManager) {
+async function computeStatistics(website, duration, statisticsManager) {
   // Get current date to compute recent statistics
   const end = Date.now();
   // Get the logs of the website between the interval
-  const logs = await getLogs(websiteName, end - duration, end);
+  const logs = await getLogs(website._id, end - duration, end);
   // Compute statistics of the logs
   const availability = await computeAvailability(logs);
   const maxResponseTime = await computeMaxResponseTime(logs);
@@ -19,7 +19,7 @@ async function computeStatistics(websiteName, duration, statisticsManager) {
   const statistics = {
     date: end,
     duration,
-    websiteName,
+    websiteName: website.name,
     availability,
     maxResponseTime,
     averageResponseTime,
