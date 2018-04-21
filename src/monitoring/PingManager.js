@@ -2,6 +2,12 @@
 const pingWebsite = require('./logic/websitePinger');
 const { Website } = require('../database/database');
 
+// This class is responsible for websites ping
+// It creates and keeps track of ping intervals
+// These intervals are responsible for ping regularly
+// The Manager ensure there is only one interval per website using two principles:
+// 1 - The Manager follows the singleton pattern: there is only one instance of it
+// 2 - When startPing is called, the Manager doesn't create interval for currently pinged websites
 class PingManager {
   constructor() {
     // This global variable keeps track of running intervals
@@ -10,12 +16,14 @@ class PingManager {
     this.websites = [];
   }
 
-  // This function set up checking of websites
+  // This function set up ping of websites
+  // If a website is already regularly checked, the function will not create a new interval for it
   async startPing() {
     // Get all websites
     const websites = await Website.find();
     // Check website availability at regular intervals, given by the checkInterval field
     websites.map((website) => {
+      // If the website is not already checked
       if (this.websites.indexOf(website.id) === -1) {
         const interval = setInterval(pingWebsite, website.checkInterval * 1000, website);
         // Keep track of running intervals to be able to cancel them later
@@ -32,7 +40,7 @@ class PingManager {
     this.intervals.map((interval) => {
       clearInterval(interval);
     });
-    // Empty the pinged websites
+    // Empty the currently checked websites
     this.websites = [];
   }
 }
@@ -41,4 +49,5 @@ class PingManager {
 // It is the same instance which will be accessed from everywhere
 const pingManager = new PingManager();
 
+// Export the unique pingManager instance
 module.exports = pingManager;
