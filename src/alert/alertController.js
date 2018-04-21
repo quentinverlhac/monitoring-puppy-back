@@ -11,10 +11,5 @@ async function getHistory(req, res, next) {
   }
 }
 
-async function addToHistory(event) {
-  const history = await new Alert(event);
-  history.save();
-}
-
 module.exports = getHistory;
 
