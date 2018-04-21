@@ -10,9 +10,10 @@ const handleError = require('../misc/errorHandler');
 const router = new express.Router();
 
 // Set up routes
-router.route('/')
-  .get(runMonitoring)
-  .delete(stopMonitoring);
+router.route('/run')
+  .get(runMonitoring);
+router.route('/stop')
+  .get(stopMonitoring);
 router.use(handleError);
 
 // Export router
