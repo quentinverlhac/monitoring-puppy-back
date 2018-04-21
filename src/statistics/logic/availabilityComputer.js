@@ -3,7 +3,7 @@ async function computeAvailability(logs) {
   // Compute the number of successful request
   let availableLogs = 0;
   logs.map((log) => {
-    if (log.answered && log.responseCode === '200') {
+    if (log.success) {
       // If the request received a successful answer
       availableLogs += 1;
     }
