@@ -13,6 +13,7 @@ const alertRouter = require('./alert/alertRouter');
 const pingManager = require('./monitoring/PingManager');
 const StatisticsManager = require('./statistics/StatisticManager');
 const AlertManager = require('./alert/AlertManager');
+const testRouter = require('./test/testRouter');
 
 // Use body parser for parsing the body of http requests to json objets
 app.use(bodyParser.json());
@@ -37,6 +38,7 @@ app.use('/api/website', websiteRouter);
 app.use('/api/monitoring', monitoringRouter);
 app.use('/api/log', logRouter);
 app.use('/api/alert', alertRouter);
+app.use('/api/test', testRouter);
 
 // Exports
 module.exports = server;
