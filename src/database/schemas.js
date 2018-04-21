@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const logSchema = new mongoose.Schema({
   website: { type: mongoose.Schema.Types.ObjectId, ref: 'Website' },
   dateTimestamp: Number,
-  answered: Boolean,
+  success: Boolean,
   responseTime: Number,
   responseCode: String,
 });
@@ -25,7 +25,7 @@ const websiteSchema = new mongoose.Schema({
 });
 
 // Create a schema for alert history
-const historySchema = new mongoose.Schema({
+const alertSchema = new mongoose.Schema({
   website: { type: mongoose.Schema.Types.ObjectId, ref: 'Website' },
   status: String,
   availability: Number,
@@ -36,6 +36,6 @@ const historySchema = new mongoose.Schema({
 module.exports = {
   logSchema,
   websiteSchema,
-  historySchema,
+  alertSchema,
 };
 

@@ -1,10 +1,10 @@
 // Import node modules
-const { History } = require('../database/database');
+const { Alert } = require('../database/database');
 
 async function getHistory(req, res, next) {
   try {
     // Get all history until date timestamp
-    const history = await History.find({ dateTimestamp: { $gt: parseInt(req.params.timestamp) } }).populate('website');
+    const history = await Alert.find({ dateTimestamp: { $gt: parseInt(req.params.timestamp) } }).populate('website');
     res.send(history);
   } catch (err) {
     next(err, req, res, next);
@@ -12,7 +12,7 @@ async function getHistory(req, res, next) {
 }
 
 async function addToHistory(event) {
-  const history = await new History(event);
+  const history = await new Alert(event);
   history.save();
 }
 

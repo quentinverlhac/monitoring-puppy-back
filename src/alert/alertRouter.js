@@ -1,6 +1,6 @@
 // Import node modules
 const express = require('express');
-const getHistory = require('./historyController');
+const getHistory = require('./alertController');
 const handleError = require('../misc/errorHandler');
 
 // Create router

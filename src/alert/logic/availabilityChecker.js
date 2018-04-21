@@ -1,5 +1,5 @@
 // Import node modules
-const { History } = require('../../database/database');
+const { Alert } = require('../../database/database');
 const getLogs = require('../../log/logGetter');
 const computeAvailability = require('../../statistics/logic/availabilityComputer');
 
@@ -17,7 +17,7 @@ async function checkAvailability(website, duration, alertManager) {
     website.isDown = !website.isDown;
     await website.save();
     // Create an alert
-    const alert = new History({
+    const alert = new Alert({
       website: website._id,
       status: (website.isDown ? 'down' : 'up'),
       availability,

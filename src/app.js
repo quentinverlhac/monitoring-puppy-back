@@ -9,10 +9,10 @@ const bodyParser = require('body-parser');
 const websiteRouter = require('./website/websiteRouter');
 const monitoringRouter = require('./monitoring/monitoringRouter');
 const logRouter = require('./log/logRouter');
-const historyRouter = require('./history/historyRouter');
+const alertRouter = require('./alert/alertRouter');
 const pingManager = require('./monitoring/PingManager');
 const StatisticsManager = require('./statistics/StatisticManager');
-const AlertManager = require('./history/AlertManager');
+const AlertManager = require('./alert/AlertManager');
 
 // Use body parser for parsing the body of http requests to json objets
 app.use(bodyParser.json());
@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
 app.use('/api/website', websiteRouter);
 app.use('/api/monitoring', monitoringRouter);
 app.use('/api/log', logRouter);
-app.use('/api/history', historyRouter);
+app.use('/api/alert', alertRouter);
 
 // Exports
 module.exports = server;

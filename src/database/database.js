@@ -1,7 +1,7 @@
 // Import node modules
 const mongoose = require('mongoose');
 
-const { logSchema, websiteSchema, historySchema } = require('./schemas');
+const { logSchema, websiteSchema, alertSchema } = require('./schemas');
 
 // Connect mongoose to the mongodb database
 mongoose.connect('mongodb://puppy-db/test');
@@ -19,11 +19,11 @@ db.once('open', () => {
 // Create models from mongodb schema
 const Website = db.model('Website', websiteSchema);
 const Log = db.model('Log', logSchema);
-const History = db.model('History', historySchema);
+const Alert = db.model('Alert', alertSchema);
 
 // Export models
 module.exports = {
   Log,
   Website,
-  History,
+  Alert,
 };
