@@ -8,7 +8,7 @@ async function checkAvailability(website, duration, alertManager) {
   // Measure current date
   const now = Date.now();
   // Get all logs within last 2 minutes
-  const logs = await getLogs(website._id, now - duration, now);
+  const logs = await getLogs(website.id, now - duration, now);
   // Compute availability of the logs
   const availability = await computeAvailability(logs);
   // If there is a breakthrough in the website situation
