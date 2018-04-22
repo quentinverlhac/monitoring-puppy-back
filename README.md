@@ -17,6 +17,7 @@ The back run on two docker containers (see docker-compose.yml file):
 
 To run the back:
 - Install docker, if it is not already done
+- Install Node.js, if it is not already done
 - Make sure the ports 27017 (for the database) and 8080 (for the server) are available on your computer
 - Open a terminal at the back folder
 - Run `npm install` to install dependencies
