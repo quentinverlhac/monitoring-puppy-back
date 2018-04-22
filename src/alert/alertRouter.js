@@ -17,9 +17,9 @@ module.exports = router;
 // Write API documentation
 
 /**
- * @api {get} api/log/:website/:beginning/:end getLogs
- * @apiName getLogs
- * @apiGroup log
+ * @api {get} api/alert/:beginning getHistory
+ * @apiName getHistory
+ * @apiGroup alert
  * @apiDescription Get the history that was written since the beginning date.
  * @apiParam (URL parameters) {Number} timestamp The beginning timestamp date
  * @apiSuccess (Response field) {Object[]} data The response array of objects
