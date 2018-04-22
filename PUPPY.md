@@ -83,7 +83,7 @@ Here is a small tutorial to get started:
 - Run `node puppy list` to see all monitored websites
 - Run `node puppy monitor` to start monitoring the websites of the list
 
-![Screenshot](screeshot.png)
+![screenshot](https://github.com/quentinverlhac/monitoring-puppy-back/blob/master/screenshot.png)
 
 Here is a list of all the commands of Puppy:
 
