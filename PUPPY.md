@@ -91,16 +91,16 @@ Depending when you run puppy monitor, you should see alertTest going offline wit
 Here is a list of all the commands of Puppy:
 
 - `add <website> <url> <check_interval>` : Add a website to monitoring
-      `<website> [string]` the name of the website
-      `<url> [string]` the url of the website
-      `<check_interval> [number]` the time interval between each website check (in second)
+      - `<website> [string]` the name of the website
+      - `<url> [string]` the url of the website
+      - `<check_interval> [number]` the time interval between each website check (in second)
 
 - `list` : List all monitored websites
 
 - `update [options] <website>` : Update the given fields of the website
-      `-n --name [string]` the new name of the website
-      `-u --url [string]` the new url of the website
-      `-i --interval [number]` the new time interval between website checks (in seconds)
+      - `-n --name [string]` the new name of the website
+      - `-u --url [string]` the new url of the website
+      - `-i --interval [number]` the new time interval between website checks (in seconds)
 
 - `remove <website>` : Remove the website given by its name <website>
 
