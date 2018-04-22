@@ -25,9 +25,9 @@ module.exports = router;
 
 /**
  * @apiDefine responseWebsite
- * @apiSuccess (Response field) {String} res.name The name of the website
- * @apiSuccess (Response field) {String} res.url The url of the website
- * @apiSuccess (Response field) {Number} res.checkInterval The time interval between each availability check (in seconds)
+ * @apiSuccess (Response field) {String} data.name The name of the website
+ * @apiSuccess (Response field) {String} data.url The url of the website
+ * @apiSuccess (Response field) {Number} data.checkInterval The time interval between each availability check (in seconds)
  */
 
 /**
@@ -38,7 +38,7 @@ module.exports = router;
  * @apiParam (Body parameters) {String} name The name of the website (must be unique)
  * @apiParam (Body parameters) {String} url The url of the website (must be unique)
  * @apiParam (Body parameters) {Number} checkInterval The time interval between each availability check (in seconds)
- * @apiSuccess (Response field) {Object} res The response is an object
+ * @apiSuccess (Response field) {Object} data The response is an object
  * @apiUse responseWebsite
  * @apiVersion 0.1.0
  */
@@ -48,7 +48,7 @@ module.exports = router;
  * @apiName getAllWebsite
  * @apiGroup Website
  * @apiDescription Get all monitored websites
- * @apiSuccess (Response field) {Object[]} res The response is an array of objects
+ * @apiSuccess (Response field) {Object[]} data The response is an array of objects
  * @apiUse responseWebsite
  * @apiVersion 0.1.0
  */
@@ -61,7 +61,7 @@ module.exports = router;
  * @apiParam (Body parameters) {String} [name] The name of the website (must be unique)
  * @apiParam (Body parameters) {String} [url] The url of the website (must be unique)
  * @apiParam (Body parameters) {Number} [checkInterval] The time interval between each availability check (in seconds)
- * @apiSuccess (Response field) {Object} res The response is an object
+ * @apiSuccess (Response field) {Object} data The response is an object
  * @apiUse responseWebsite
  * @apiVersion 0.1.0
  */
@@ -71,7 +71,7 @@ module.exports = router;
  * @apiName deleteWebsite
  * @apiGroup Website
  * @apiDescription Delete the url named website
- * @apiSuccess (Response field) {Object} res The response is an object
+ * @apiSuccess (Response field) {Object} data The response is an object
  * @apiUse responseWebsite
  * @apiVersion 0.1.0
  */
