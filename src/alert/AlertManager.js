@@ -2,7 +2,7 @@
 const { Website } = require('../database/database');
 const checkAvailability = require('./logic/availabilityChecker');
 
-class StatisticsManager {
+class AlertManager {
   constructor(socket) {
     // This variable keeps track of the socket for sending live statistics
     this.socket = socket;
@@ -36,5 +36,5 @@ class StatisticsManager {
   }
 }
 
-module.exports = StatisticsManager;
+module.exports = AlertManager;
 
