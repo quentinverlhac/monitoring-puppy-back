@@ -16,12 +16,20 @@ The back run on two docker containers (see docker-compose.yml file):
 - The Node.js server container
 
 To run the back:
-- Install docker, if it is not already done
+- Install Docker and Docker Compose, if it is not already done
 - Install Node.js, if it is not already done
 - Make sure the ports 27017 (for the database) and 8080 (for the server) are available on your computer
 - Open a terminal at the back folder
 - Run `npm install` to install dependencies
 - Run `docker-compose up` to lauch the back
+
+### Windows recommandations
+
+**Warning**: The `docker-compose up` command is replaced by `docker-compose.exe up`
+
+You can use Docker for Windows on Windows 10 Profesionnal or Enterprise 64-bit.
+For the other versions, you can use Docker Toolbox.
+
 
 ## Api documentation
 
