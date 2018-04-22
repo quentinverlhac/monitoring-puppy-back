@@ -38,19 +38,27 @@ The database is in `MongoDB`. `Mongoose` is the ORM used in order to communicate
 Index.js is the file that docker run when it starts the back.
 Appart from `index.js`, everything happens in the folder `src`.
 
+Routes and socket are set up in `src/app.js` file.
+
+### Database
+
 The Mongoose schemas can be found in the file `src/database/schemas.js`.
 The connection with the MongoDB database is set in `src/database/database.js`
 The various model entities are set up in `src/database/database.js`
 
+### Routes
+
 Every entity is managed in its own folder (for exemple `src/website` for websites).
 In almost all these folders, there is:
 -The `entityController.js` file, which implements the functions that communicate with the database
--The `entityRouter.js` file, which creates the routes using the controller functions
+-The `entityRouter.js` file, which creates the routes for the api
+
+### Managers
 
 Periodically repeated tasks (e.g.: website ping, statistics computing, alert sending) are handled by `Managers`.
 These objects manage Node.js intervals, which are timers that call a function periodically.
 The Managers are responsible for creating and cleaning intervals.
 
-There are request related functions (a parameters validator and an error handler) in `src/misc` folder.
+### Misc
 
-Finally, routes and socket are set up in `app.js` file.
+There are request related functions (handling error, validating parameters, ...) in `src/misc` folder.
