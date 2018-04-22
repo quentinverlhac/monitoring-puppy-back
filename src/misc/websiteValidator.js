@@ -5,22 +5,33 @@ const { Website } = require('../database/database');
 // It works for both addition and update
 async function validateWebsiteBody(req, res, next) {
   try {
-    // Test if the name is already taken
-    let website = await Website.findOne({ name: req.body.name });
-    if (website != null && req.params.name !== website.name) {
-      // The name is taken by an other website
-      // In case of update, we make sure it is not the name of the updated website
-      res.status(400).send(`Error: website name ${req.body.name} already used`);
+    // Write a regex to check url
+    const httpPattern = /^(f|ht)tps?:\/\//;
+    // Check every that existing body field has the right format
+    if (req.body.url && !httpPattern.test(req.body.url)) {
+      // The url doesn't begin with the http scheme
+      res.status(400).send(`Error: website url "${req.body.url}" must be a url beginning with the http scheme`);
+    } else if (req.body.checkInterval && (isNaN(req.body.checkInterval) || req.body.checkInterval > 2e10)) {
+      // The check interval is not a number or is too high (more than 100 years)
+      res.status(400).send(`Error: website check interval "${req.body.checkInterval}" must be a number less than 20 billion seconds`);
     } else {
-      // Test if the url is already taken
-      website = await Website.findOne({ url: req.body.url });
+      // Test if the name is already taken
+      let website = await Website.findOne({ name: req.body.name });
       if (website != null && req.params.name !== website.name) {
-        // The url is taken by an other website
-        // In case of update, we make sure it is not the url of the updated website
-        res.status(400).send(`Error: website url ${req.body.url} already used`);
+        // The name is taken by an other website
+        // In case of update, we make sure it is not the name of the updated website
+        res.status(400).send(`Error: website name "${req.body.name}" already used`);
       } else {
-        // Everything is fine, let's complete the request !
-        next();
+        // Test if the url is already taken
+        website = await Website.findOne({ url: req.body.url });
+        if (website != null && req.params.name !== website.name) {
+          // The url is taken by an other website
+          // In case of update, we make sure it is not the url of the updated website
+          res.status(400).send(`Error: website url "${req.body.url}" already used`);
+        } else {
+          // Everything is fine, let's complete the request !
+          next();
+        }
       }
     }
   } catch (err) {
