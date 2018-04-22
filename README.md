@@ -3,6 +3,8 @@
 This is the back end of Puppy monitoring application.
 It is responsible for managing the database, monitoring websites and computing statistics and alerts.
 
+Learn more in PUPPY.md
+
 Table of Contents:
 - Launch the back in development environment
 - Api documentation
