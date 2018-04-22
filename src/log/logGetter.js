@@ -7,7 +7,7 @@ async function getLogs(websiteId, beginning, end) {
     dateTimestamp: { $gt: parseInt(beginning), $lt: parseInt(end) },
   }).populate('website');
   // Return the logs that correspond to the given website
-  return logs.filter(log => log.website.id === websiteId);
+  return logs.filter(log => log.website && log.website.id === websiteId);
 }
 
 module.exports = getLogs;
