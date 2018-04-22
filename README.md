@@ -37,7 +37,7 @@ This back end uses **Node.js** and the module **Express** for the server and the
 The database is in **MongoDB**. **Mongoose** is the ORM used in order to communicate with the database.
 
 *index.js* is the file that docker run when it starts the back.
-Appart from *index.js*, everything happens in the folder *src*.
+Appart from *index.js*, everything happens in the folder *src/*.
 
 Routes and socket are set up in *src/app.js* file.
 
@@ -49,7 +49,7 @@ The various model entities are set up in *src/database/database.js*
 
 ### Routes
 
-Every entity is managed in its own folder (for exemple *src/website* for websites).
+Every entity is managed in its own folder (for exemple *src/website/* for websites).
 In almost all these folders, there is:
 -The *entityController.js* file, which implements the functions that communicate with the database
 -The *entityRouter.js* file, which creates the routes for the api
@@ -62,4 +62,4 @@ The Managers are responsible for creating and cleaning intervals.
 
 ### Misc
 
-There are request related functions (handling error, validating parameters, ...) in *src/misc* folder.
+There are request related functions (handling error, validating parameters, ...) in *src/misc/* folder.
