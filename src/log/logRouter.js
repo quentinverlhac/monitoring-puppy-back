@@ -24,7 +24,7 @@ module.exports = router;
  * @apiParam (URL parameters) {String} website The name of the website
  * @apiParam (URL parameters) {Number} beginning The beginning timestamp date
  * @apiParam (URL parameters) {Number} end The end timestamp date
- * @apiSuccess (Response field) {Object} data The response object
+ * @apiSuccess (Response field) {Object[]} data The response object
  * @apiSuccess (Response field) {String} data._id The id of the log
  * @apiSuccess (Response field) {Number} data.dateTimestamp An integer representing the date of the log as the number of milliseconds since the 1st Jan 1970
  * @apiSuccess (Response field) {Boolean} data.success A boolean indicating if the ping was successfully answered
