@@ -83,7 +83,10 @@ Here is a small tutorial to get started:
 - Run `node puppy list` to see all monitored websites
 - Run `node puppy monitor` to start monitoring the websites of the list
 
-![screenshot](https://github.com/quentinverlhac/monitoring-puppy-back/blob/master/screenshot.png)
+At the very beginning, codesTest should break and stay down forever, because this test always send error reponses.
+Depending when you run puppy monitor, you should see alertTest going offline within a range of 2 minutes (it can be immediate). Then, you should see it going back online, again in a range of 2 minutes. And it will alternate that way forever. Datadog website should be online so you shouldn't see alerts about it.
+
+![screenshot](https://github.com/quentinverlhac/monitoring-puppy-front/blob/master/screenshot.png)
 
 Here is a list of all the commands of Puppy:
 
@@ -171,7 +174,9 @@ There is also the documentation of the back end API generated with ApiDoc. See t
 To test the alerts, it would be difficult to write unitary tests because the system works as a whole. The function that generate alerts reads the logs in the database, create Alert objects in the database and sends alerts to the front.
 
 Therefore I chose to write a global test:
-The back end exposes a route which simulates a website that periodically breaks and goes back up. 
+The back end exposes a route which simulates a website that periodically breaks and goes back up.
+It works with a average availability oscillating like a cosinus, with a random noise which can make the website to go up and down several time when the availabiity is close to 0.8.
+
 While monitoring this route, the alert manager will regularly send *down* and *up* alerts to the front end.
 It is possible to compare the logs in the front end with the logs displayed by the back end in its console.
 It shows that alerts are functional.
