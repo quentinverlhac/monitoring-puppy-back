@@ -20,7 +20,7 @@ module.exports = router;
  * @api {get} api/log/:website/:beginning/:end getLogs
  * @apiName getLogs
  * @apiGroup log
- * @apiDescription Get the website logs that where written between the beginning and the end date. This route is used for development purposes.
+ * @apiDescription Get the website logs that were written between the beginning and the end date. This route is used for development purposes.
  * @apiParam (URL parameters) {String} website The name of the website
  * @apiParam (URL parameters) {Number} beginning The beginning timestamp date
  * @apiParam (URL parameters) {Number} end The end timestamp date
